@@ -112,26 +112,26 @@ export const Features = () => {
   const backgroundPositionX = useMotionValue(tabs[0].backgroundPositionX);
   const backgroundPositionY = useMotionValue(tabs[0].backgroundPositionY);
   const backgroundSizeX = useMotionValue(tabs[0].backgroundSizeX);
-
-  const backgroundPosition = useMotionTemplate`${backgroundPositionX} ${backgroundPositionY}`;
-  const backgroundSize = useMotionTemplate`${backgroundSizeX}% auto`;
-
+  
   const handleSelectedTab = (index: number) => {
     setSelectedTab(index);
-
+    
     const animateActions : ValueAnimationTransition =  {
       duration: 2,
       ease: "easeInOut"
     }
-
+    
     animate(backgroundSizeX, [backgroundSizeX.get() , 100  , tabs[index].backgroundSizeX] , animateActions)
-
+    
     animate(backgroundPositionX, [backgroundPositionX.get() , tabs[index].backgroundPositionX] ,animateActions)
     
     animate(backgroundPositionY, [backgroundPositionY.get() , tabs[index].backgroundPositionY] ,animateActions)
-
   }
-
+  
+  
+    const backgroundPosition = useMotionTemplate`${backgroundPositionX}% ${backgroundPositionY}%`;
+    const backgroundSize = useMotionTemplate`${backgroundSizeX}% auto`;
+    
   return (
     <section className="py-20">
       <div className="container">
